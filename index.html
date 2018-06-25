@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Our Love Story</title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+</style>
+
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+	<div class="flip">
+		<div class="flip-box">
+			<div id="flip-item-front" class="flip-item flip-item-front">
+				<img width="140" height="140" class="jinger-logo" style="border-radius: 50%" src="./img/jinger.jpg" alt="女朋友啊" />
+			</div>
+	
+			<div id="flip-item-back" class="flip-item flip-item-back">
+				<img width="140" height="140" class="me-logo" style="border-radius: 50%" src="./img/yunliuyan.jpg" alt="是本尊啊" />
+			</div>
+		</div>
+	</div>
+<div id="mainDiv">
+	<div id="content">
+		<div id="code">
+            青玉案<br/><br/>
+            <span>云纱缥舞花枝瘦,暗香动，相轻嗅</span><br/>
+            <span>夜静风柔春更诱</span><br/>
+            <span>西楼月满，东流蝉叩,藏于佳人候</span><br/><br/>
+            <span>清欢两盏青梅酒,醉极酣然抱红袖</span><br/>
+            <span>一梦韶光抛白首</span><br/>
+            <span>万川雪柳，千重霜皱,思量依如旧</span><br/>
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					亲爱的，这是我们相爱在一起的时光。
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					山有木兮卿有意，相守永无期。<br/>
+					<div class="signature">- 于.静</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 50;
+var together = new Date();
+together.setFullYear(2018, 1, 19);
+together.setHours(13);
+together.setMinutes(7);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 6000);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+window.onload = function() {
+	setInterval(function(){	
+		if(document.getElementById("flip-item-front").style.zIndex == 2){
+			document.getElementById("flip-item-front").style.zIndex = 1;
+			document.getElementById("flip-item-front").style.transform = 'rotateY(180deg)';
+			document.getElementById("flip-item-back").style.zIndex = 2;
+			document.getElementById("flip-item-back").style.transform = 'rotateY(0deg)';
+
+		}else{
+			document.getElementById("flip-item-back").style.zIndex = 1;
+			document.getElementById("flip-item-back").style.transform = 'rotateY(180deg)';
+			document.getElementById("flip-item-front").style.zIndex = 2;
+			document.getElementById("flip-item-front").style.transform = 'rotateY(0deg)';
+		}
+	},3000)
+}
+</script>
+
+</body>
+</html>
